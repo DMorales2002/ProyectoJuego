@@ -9,10 +9,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
     Puntos points = new Puntos();
+    vidas vida =new vidas();
+    Puntaje puntaje = new Puntaje();
     /**
      * Constructor for objects of class MyWorld.
      * 
      */
+    
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -28,14 +31,19 @@ public class MyWorld extends World
                         bandera=false;
                     }
                 }
+         
     
     }    
     public Puntos getPuntos()
     {
         return points;         
     }
-    
-    
+    public vidas getVidas(){
+        return vida;
+    }
+    public Puntaje getPuntaje(){
+        return puntaje;
+    }
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -43,6 +51,7 @@ public class MyWorld extends World
     private void prepare()
     {
         addObject(points, 40,15);
+        addObject(vida, 690,15);
         Pelota pelota = new Pelota();
         addObject(pelota,384,225);
         pelota.setLocation(368,224);
@@ -58,5 +67,7 @@ public class MyWorld extends World
         addObject(puntos,38,22);
         removeObject(puntos);
         removeObject(porteria);
+        
+        
     }
 }

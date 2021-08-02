@@ -42,9 +42,29 @@ public class Portero extends Actor
             World world = getWorld();
             world.removeObject(pelota);
             MyWorld mundo = (MyWorld)world;
-            int x = 742/2;
-            int y = 444/2;
-            //getWorld().addObject(new Pelota(), x, y);
+            vidas vida = mundo.getVidas();
+            vida.deletevidas();
+            Greenfoot.playSound("dead.mp3");
+            int seguir = vida.getCont();
+            if (seguir != 0)
+            {
+                int x2=742/2;
+                int y2=444/2;
+                getWorld().addObject(new Pelota(),x2,y2);  
+                Greenfoot.delay(100);
+            }else{
+                Greenfoot.playSound("GameOver.mp3");                
+                Puntos puntos = mundo.getPuntos();
+                int total = puntos.getScore();
+                Puntaje fin = mundo.getPuntaje();
+                fin.puntaje(total);
+                
+                getWorld().addObject(new GameOver(),371,222);
+                getWorld().addObject(fin,371,280);
+                Greenfoot.delay(120);
+                Greenfoot.stop();
+            }
+            
         }
     }
 }

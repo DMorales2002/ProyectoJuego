@@ -58,9 +58,8 @@ public class Pelota extends Actor
             world.removeObject(porteria);
             MyWorld mundo = (MyWorld)world;
             Puntos puntos = mundo.getPuntos();
+            Greenfoot.playSound("point.mp3");
             puntos.addScore();
-            
-            //poner sonido de gol
             int goles = puntos.getScore();
             boolean bandera= true;
             while (bandera){
@@ -72,11 +71,17 @@ public class Pelota extends Actor
                         bandera=false;
                     }
                 }                  
-            if (goles%5 == 0)
+            if (goles%5 == 0 && goles <31)
             {
                 int x2=Greenfoot.getRandomNumber(720);
                 int y2=Greenfoot.getRandomNumber(410);
-                getWorld().addObject(new Portero(),x2,y2);    
+                getWorld().addObject(new Portero(),x2,y2);  
+                //sonido nuevo enemigo
+            }
+            if (goles%20 == 0){
+                Greenfoot.playSound("liveup.mp3");
+                vidas vida = mundo.getVidas();
+                vida.addvidas();                
             }
             
             }            
